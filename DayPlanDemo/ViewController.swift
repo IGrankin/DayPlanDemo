@@ -10,8 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet var backgroundDayPlanView: UIView!
+    private var dayPlanView: DayPlanView = DayPlanView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        dayPlanView.frame = backgroundDayPlanView.bounds
+        backgroundDayPlanView.addSubview(dayPlanView)
         // Do any additional setup after loading the view.
     }
 

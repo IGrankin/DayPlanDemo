@@ -13,6 +13,7 @@
 		849B28ED23A3C61C003DB5AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B28EB23A3C61C003DB5AE /* Main.storyboard */; };
 		849B28EF23A3C61E003DB5AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 849B28EE23A3C61E003DB5AE /* Assets.xcassets */; };
 		849B28F223A3C61E003DB5AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849B28F023A3C61E003DB5AE /* LaunchScreen.storyboard */; };
+		849B28FB23A3E236003DB5AE /* DayPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849B28FA23A3E236003DB5AE /* DayPlanView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		849B28EE23A3C61E003DB5AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		849B28F123A3C61E003DB5AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		849B28F323A3C61E003DB5AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		849B28FA23A3E236003DB5AE /* DayPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPlanView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		849B28E423A3C61C003DB5AE /* DayPlanDemo */ = {
 			isa = PBXGroup;
 			children = (
+				849B28F923A3E214003DB5AE /* DayPlanView */,
 				849B28E523A3C61C003DB5AE /* AppDelegate.swift */,
 				849B28E723A3C61C003DB5AE /* SceneDelegate.swift */,
 				849B28E923A3C61C003DB5AE /* ViewController.swift */,
@@ -65,6 +68,14 @@
 				849B28F323A3C61E003DB5AE /* Info.plist */,
 			);
 			path = DayPlanDemo;
+			sourceTree = "<group>";
+		};
+		849B28F923A3E214003DB5AE /* DayPlanView */ = {
+			isa = PBXGroup;
+			children = (
+				849B28FA23A3E236003DB5AE /* DayPlanView.swift */,
+			);
+			path = DayPlanView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				849B28FB23A3E236003DB5AE /* DayPlanView.swift in Sources */,
 				849B28EA23A3C61C003DB5AE /* ViewController.swift in Sources */,
 				849B28E623A3C61C003DB5AE /* AppDelegate.swift in Sources */,
 				849B28E823A3C61C003DB5AE /* SceneDelegate.swift in Sources */,
