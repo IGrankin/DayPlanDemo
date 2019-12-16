@@ -80,6 +80,11 @@ class DayPlanView: UIView {
         events.append(Event(startTime: formatter.date(from: "2016/10/08 03:11")!, endTime: formatter.date(from: "2016/10/08 07:23")!))
         events.append(Event(startTime: formatter.date(from: "2016/10/08 02:00")!, endTime: formatter.date(from: "2016/10/08 03:09")!))
         events.append(Event(startTime: formatter.date(from: "2016/10/08 02:00")!, endTime: formatter.date(from: "2016/10/08 04:23")!))
+        events.append(Event(startTime: formatter.date(from: "2016/10/08 02:00")!, endTime: formatter.date(from: "2016/10/08 05:10")!))
+        events.append(Event(startTime: formatter.date(from: "2016/10/08 03:00")!, endTime: formatter.date(from: "2016/10/08 10:10")!))
+        events.append(Event(startTime: formatter.date(from: "2016/10/08 01:55")!, endTime: formatter.date(from: "2016/10/08 06:48")!))
+//        events.append(Event(startTime: formatter.date(from: "2016/10/08 05:00")!, endTime: formatter.date(from: "2016/10/08 06:10")!))
+//        events.append(Event(startTime: formatter.date(from: "2016/10/08 05:00")!, endTime: formatter.date(from: "2016/10/08 06:10")!))
         
         let firstCalendar = Calendar(events: events)
         
@@ -93,7 +98,7 @@ class DayPlanView: UIView {
     
     override func layoutSubviews() {
         
-        totalHeight = self.frame.size.height
+        totalHeight = self.frame.size.height > totalHeight ? self.frame.size.height : totalHeight
         timelineView.frame = CGRect(x: 0, y: 0, width: 24 * hourWidth, height: timelineViewHeight)
         timelineView.backgroundColor = .red
         scrollview.frame = CGRect(x: 0, y: timelineViewHeight, width: self.frame.size.width, height: self.frame.size.height)
@@ -148,7 +153,8 @@ class DayPlanView: UIView {
                     if tempRect.intersects(currentEventView.frame) {
                         tempRect.origin.y += backgroundEventHeight
                         didFoundYCoord = false
-                        if tempRect.origin.y > totalHeight  {
+                        print("temp.origin.y \(tempRect.origin.y) totalHeight \(totalHeight)")
+                        if tempRect.origin.y + CGFloat(backgroundEventHeight) > totalHeight  {
                             shouldUpdateScrollViewHeight = true
                         }
                         break
@@ -157,7 +163,7 @@ class DayPlanView: UIView {
                 }
             }
             if shouldUpdateScrollViewHeight {
-                totalHeight += backgroundEventHeight
+                totalHeight += tempRect.origin.y + CGFloat(backgroundEventHeight) - totalHeight
                 scrollview.contentSize.height = totalHeight
                 drawLayers()
             }
@@ -175,7 +181,7 @@ class DayPlanView: UIView {
     
     func drawHoursLabels() {
         for currentHour in 0..<24 {
-            var hourLabel = UILabel()
+            let hourLabel = UILabel()
             hourLabel.text = "\(currentHour):00"
             hourLabel.frame = CGRect(x: CGFloat(currentHour) * hourWidth, y: 0, width: hourWidth, height: timelineViewHeight)
             timelineView.addSubview(hourLabel)
@@ -200,7 +206,7 @@ class DayPlanView: UIView {
     
     func drawMemberLines() {
         var lastOffset: CGFloat = 0
-        let backgroundNumbers = Int(totalHeight / backgroundEventHeight)
+        let backgroundNumbers = Int(Float(totalHeight / backgroundEventHeight).rounded())
         for currentBackground in 0..<backgroundNumbers {
             let dashedHourLine = CAShapeLayer()
             dashedHourLine.zPosition = scrollview.layer.zPosition-1
